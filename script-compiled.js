@@ -33,6 +33,44 @@ var Stopwatch = function () {
 		value: function format(times) {
 			return pad0(times.minutes) + ':' + pad0(times.seconds) + ':' + pad0(Math.floor(times.miliseconds));
 		}
+	}, {
+		key: 'start',
+		value: function start() {
+			var _this = this;
+
+			if (!this.running) {
+				this.running = true;
+				this.watch = setInterval(function () {
+					return _this.step();
+				}, 10);
+			}
+		}
+	}, {
+		key: 'step',
+		value: function step() {
+			if (!this.running) return;
+			this.calculate();
+			this.print();
+		}
+	}, {
+		key: 'calculate',
+		value: function calculate() {
+			this.times.miliseconds += 1;
+			if (this.times.miliseconds >= 100) {
+				this.times.seconds += 1;
+				this.times.miliseconds = 0;
+			}
+			if (this.times.seconds >= 60) {
+				this.times.minutes += 1;
+				this.times.seconds = 0;
+			}
+		}
+	}, {
+		key: 'stop',
+		value: function stop() {
+			this.running = false;
+			clearInterval(this.watch);
+		}
 	}]);
 
 	return Stopwatch;
