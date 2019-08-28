@@ -1,0 +1,26 @@
+.stopwatch {
+	background-color: grey;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 400px;
+	height: 150px;
+	font-size: 40px;
+	color: white;
+}
+.controls {
+	display: flex;
+	justify-content: center;
+	width: 400px;
+	height: 50px;
+	background-color: grey;
+	padding-top: 20px;
+}
+.button {
+	color: white;
+	font-size: 30px;
+	text-decoration: none;
+	padding: 20px;
+	margin-top: 30px;
+
+}
